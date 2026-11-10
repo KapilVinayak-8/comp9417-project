@@ -1,0 +1,8 @@
+{
+  "normalisation": "divide each daily demand profile by its mean; shape only",
+  "fit_period": "2010-2013 only; never refitted",
+  "pca_components": 5,
+  "explained_variance": 0.962424466548255,
+  "selected_k": 2,
+  "unusual_distance_cutoff_training_99pct": 0.5859386234347229
+}

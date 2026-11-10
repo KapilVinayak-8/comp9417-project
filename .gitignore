@@ -1,0 +1,9 @@
+/.venv/
+/.python/
+/.python311/
+/work/
+__pycache__/
+*.pyc
+.env
+.env.*
+/data/*.csv

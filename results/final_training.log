@@ -1,0 +1,14 @@
+Final models trained on 52560 intervals in 3.69s.
+{
+  "seed": 9417,
+  "strategy_selection": "2015-2024; holdout 2025-October 2026",
+  "historical_strategies": {
+    "demand": "periodic_3y",
+    "price": "input_drift_3y"
+  },
+  "window_days": 1095,
+  "rows": 52560,
+  "training_first_market_day": "2023-11-02",
+  "training_last_market_day": "2026-10-31",
+  "live_prediction": "fixed parameters; no retraining or persisted state"
+}

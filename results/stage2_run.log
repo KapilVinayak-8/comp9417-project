@@ -1,0 +1,10 @@
+Day types: {'normalisation': 'divide each daily demand profile by its mean; shape only', 'fit_period': '2010-2013 only; never refitted', 'pca_components': 5, 'explained_variance': 0.962424466548255, 'selected_k': 2, 'unusual_distance_cutoff_training_99pct': 0.5859386234347228}
+demand frozen {'task': 'demand', 'strategy': 'frozen', 'split': 'all', 'retrains_to_end': 0, 'MAPE': 4.612570630336585, 'MAE': 327.72788631888994}
+demand periodic_3y {'task': 'demand', 'strategy': 'periodic_3y', 'split': 'all', 'retrains_to_end': 6, 'MAPE': 3.4102013543064356, 'MAE': 253.40935657485542}
+demand input_drift_3y {'task': 'demand', 'strategy': 'input_drift_3y', 'split': 'all', 'retrains_to_end': 6, 'MAPE': 3.458189595766878, 'MAE': 255.6721349613868}
+demand error_drift_3y {'task': 'demand', 'strategy': 'error_drift_3y', 'split': 'all', 'retrains_to_end': 6, 'MAPE': 3.673924902697307, 'MAE': 266.055653506697}
+price frozen {'task': 'price', 'strategy': 'frozen', 'split': 'all', 'retrains_to_end': 0, 'Acc': 69.45279962980102, 'BalAcc': 66.1820502847302}
+price periodic_3y {'task': 'price', 'strategy': 'periodic_3y', 'split': 'all', 'retrains_to_end': 6, 'Acc': 76.97005630109517, 'BalAcc': 75.99026446683412}
+price input_drift_3y {'task': 'price', 'strategy': 'input_drift_3y', 'split': 'all', 'retrains_to_end': 6, 'Acc': 77.70177772636126, 'BalAcc': 76.89037479540393}
+price error_drift_3y {'task': 'price', 'strategy': 'error_drift_3y', 'split': 'all', 'retrains_to_end': 6, 'Acc': 77.43135893876291, 'BalAcc': 76.55711473929792}
+Stage 2 complete. Selected using development period: {'demand': {'strategy': 'periodic_3y', 'family': 'boost_demand', 'setting': 31, 'selection_value': 2.485702301978553}, 'price': {'strategy': 'input_drift_3y', 'family': 'boost_price', 'setting': 31, 'selection_value': -80.40349014187218}}

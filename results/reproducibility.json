@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "comparison": "byte-identical models.joblib after rebuilding with train.py",
+  "sha256": "eedb3a75054b40454ca24ab4b567976ecfcc596f8b75859b0acc6f58b8be5a8f",
+  "platform": "local Windows Python 3.11; Linux environment not available here"
+}

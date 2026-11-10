@@ -1,0 +1,8 @@
+{
+  "budget_and_retraining_chronology": "passed",
+  "bootstrap_matches_appendix_algorithm": "passed",
+  "detector_future_invariance_and_signal": "passed",
+  "causal_features_match_inference_on_boundaries": "passed",
+  "all_frozen_models_have_142_months_and_both_intervals": "passed",
+  "explicit_holdout_policy": "passed"
+}

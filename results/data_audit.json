@@ -1,0 +1,7 @@
+{
+  "rows": 295104,
+  "complete_days": 6148,
+  "first_timestamp": "2010-01-01 00:30:00",
+  "last_timestamp": "2026-11-01 00:00:00",
+  "harness_checks": "passed: targets and both baselines on five selected days"
+}

@@ -1,0 +1,11 @@
+Feature leakage and batch/streaming consistency checks passed.
+ridge 10.0 {'MAPE': 3.722764996425859, 'MAE': 292.1019409369203}
+ridge 1000.0 {'MAPE': 3.569846089907459, 'MAE': 280.6844328702465}
+boost_demand 15 {'MAPE': 2.618150569592883, 'MAE': 207.58850967778534}
+boost_demand 31 {'MAPE': 2.485702301978553, 'MAE': 197.66954824266222}
+logistic 0.01 {'BalAcc': 76.39883930414327, 'Acc': 76.22716894977168}
+logistic 1.0 {'BalAcc': 76.27075425447048, 'Acc': 76.07876712328768}
+boost_price 15 {'BalAcc': 80.12238117977762, 'Acc': 79.93721461187214}
+boost_price 31 {'BalAcc': 80.40349014187218, 'Acc': 80.24543378995433}
+Selected: {'demand': {'family': 'boost_demand', 'setting': 31, 'selection_value': 2.485702301978553}, 'price': {'family': 'boost_price', 'setting': 31, 'selection_value': -80.40349014187218}}
+Inference matches batch; 0.040 seconds. Total 23.9 seconds.

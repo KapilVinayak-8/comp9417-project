@@ -1,0 +1,8 @@
+demand all_features {'MAPE': 2.485702301978553, 'MAE': 197.66954824266222}
+demand no_other_states {'MAPE': 2.56129828901354, 'MAE': 203.76915308262355}
+demand no_weather {'MAPE': 2.8689168668916554, 'MAE': 230.94979815704673}
+demand no_market_lags {'MAPE': 6.504043514312584, 'MAE': 509.6545245546079}
+price all_features {'Acc': 80.24543378995433, 'BalAcc': 80.40349014187218}
+price no_other_states {'Acc': 79.57191780821918, 'BalAcc': 79.73134977542047}
+price no_weather {'Acc': 79.52625570776256, 'BalAcc': 79.68973892494031}
+price no_market_lags {'Acc': 77.08904109589041, 'BalAcc': 77.03900046634355}

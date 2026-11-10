@@ -1,0 +1,27 @@
+Package found at C:\Users\KAPILV~1\AppData\Local\Temp\c9417check_k7pi9l9s\pkg
+
+2026-10-18  ok    init   2.4s  predict   0.9s
+2026-10-19  ok    init   1.7s  predict   0.5s
+2026-10-20  ok    init   2.2s  predict   0.6s
+2026-10-21  ok    init   2.2s  predict   0.6s
+2026-10-22  ok    init   2.3s  predict   0.5s
+2026-10-23  ok    init   1.9s  predict   0.3s
+2026-10-24  ok    init   0.9s  predict   0.3s
+2026-10-25  ok    init   0.9s  predict   0.3s
+2026-10-26  ok    init   1.1s  predict   0.3s
+2026-10-27  ok    init   0.9s  predict   0.3s
+2026-10-28  ok    init   0.8s  predict   0.2s
+2026-10-29  ok    init   0.8s  predict   0.2s
+2026-10-30  ok    init   0.9s  predict   0.4s
+2026-10-31  ok    init   1.2s  predict   0.3s
+
+Scores:
+(in-sample if your models were trained on these days: they check that the package
+ runs, not how it will perform in the live week)
+                              MAPE %   MAE MW  BalAcc %   Acc %
+Your package                    2.86    169.8      92.9    92.9
+Same half-hour yesterday        7.12    415.3      78.0    78.1
+Same half-hour last week        9.95    556.2      73.2    73.5
+
+All days ran successfully.
+

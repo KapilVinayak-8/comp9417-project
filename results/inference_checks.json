@@ -1,0 +1,77 @@
+{
+  "stage": "current_final_models",
+  "init_seconds": 2.6763210999779403,
+  "days": [
+    {
+      "day": "2026-10-18",
+      "predict_seconds": 0.6945738000795245,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-19",
+      "predict_seconds": 0.12540100002661347,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-20",
+      "predict_seconds": 0.12668099999427795,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-21",
+      "predict_seconds": 0.12196269980631769,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-22",
+      "predict_seconds": 0.11543300002813339,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-23",
+      "predict_seconds": 0.11348830000497401,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-24",
+      "predict_seconds": 0.11864969995804131,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-25",
+      "predict_seconds": 0.11547690001316369,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-26",
+      "predict_seconds": 0.1197603999171406,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-27",
+      "predict_seconds": 0.11833990016020834,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-28",
+      "predict_seconds": 0.11932999989949167,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-29",
+      "predict_seconds": 0.1213176001328975,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-30",
+      "predict_seconds": 0.11794200004078448,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-31",
+      "predict_seconds": 0.11891640000976622,
+      "status": "ok"
+    }
+  ],
+  "note": "Schema and timing checks only; not the sandboxed final ZIP checker."
+}

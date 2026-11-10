@@ -1,0 +1,185 @@
+
+Running experiments/baselines.py
+baseline_1d validation {'MAPE': 4.934955172705048, 'MAE': 394.4223738584475, 'BalAcc': 73.98617484807123, 'Acc': 73.9041095890411}
+baseline_1d simulation {'MAPE': 6.150098850734842, 'MAE': 470.6383317426346, 'BalAcc': 73.42058026837645, 'Acc': 73.81035014653709}
+baseline_7d validation {'MAPE': 4.9339058465640555, 'MAE': 401.2560936073059, 'BalAcc': 74.2817557319315, 'Acc': 74.24657534246575}
+baseline_7d simulation {'MAPE': 7.421733680946628, 'MAE': 569.7349124633657, 'BalAcc': 70.41672889497698, 'Acc': 70.80682168749036}
+
+Running experiments/stage1.py
+Feature leakage and batch/streaming consistency checks passed.
+ridge 10.0 {'MAPE': 3.722764996425859, 'MAE': 292.1019409369203}
+ridge 1000.0 {'MAPE': 3.569846089907459, 'MAE': 280.6844328702465}
+boost_demand 15 {'MAPE': 2.618150569592883, 'MAE': 207.58850967778534}
+boost_demand 31 {'MAPE': 2.485702301978553, 'MAE': 197.66954824266222}
+logistic 0.01 {'BalAcc': 76.39883930414327, 'Acc': 76.22716894977168}
+logistic 1.0 {'BalAcc': 76.27075425447048, 'Acc': 76.07876712328768}
+boost_price 15 {'BalAcc': 80.12238117977762, 'Acc': 79.93721461187214}
+boost_price 31 {'BalAcc': 80.40349014187218, 'Acc': 80.24543378995433}
+Selected: {'demand': {'family': 'boost_demand', 'setting': 31, 'selection_value': 2.485702301978553}, 'price': {'family': 'boost_price', 'setting': 31, 'selection_value': -80.40349014187218}}
+Inference matches batch; 0.038 seconds. Total 17.0 seconds.
+
+Running experiments/stage2.py
+Day types: {'normalisation': 'divide each daily demand profile by its mean; shape only', 'fit_period': '2010-2013 only; never refitted', 'pca_components': 5, 'explained_variance': 0.962424466548255, 'selected_k': 2, 'unusual_distance_cutoff_training_99pct': 0.5859386234347228}
+demand frozen {'task': 'demand', 'strategy': 'frozen', 'split': 'all', 'retrains_to_end': 0, 'MAPE': 4.612570630336585, 'MAE': 327.72788631888994}
+demand periodic_3y {'task': 'demand', 'strategy': 'periodic_3y', 'split': 'all', 'retrains_to_end': 6, 'MAPE': 3.4102013543064356, 'MAE': 253.40935657485542}
+demand input_drift_3y {'task': 'demand', 'strategy': 'input_drift_3y', 'split': 'all', 'retrains_to_end': 6, 'MAPE': 3.458189595766878, 'MAE': 255.6721349613868}
+demand error_drift_3y {'task': 'demand', 'strategy': 'error_drift_3y', 'split': 'all', 'retrains_to_end': 6, 'MAPE': 3.673924902697307, 'MAE': 266.055653506697}
+price frozen {'task': 'price', 'strategy': 'frozen', 'split': 'all', 'retrains_to_end': 0, 'Acc': 69.45279962980102, 'BalAcc': 66.1820502847302}
+price periodic_3y {'task': 'price', 'strategy': 'periodic_3y', 'split': 'all', 'retrains_to_end': 6, 'Acc': 76.97005630109517, 'BalAcc': 75.99026446683412}
+price input_drift_3y {'task': 'price', 'strategy': 'input_drift_3y', 'split': 'all', 'retrains_to_end': 6, 'Acc': 77.70177772636126, 'BalAcc': 76.89037479540393}
+price error_drift_3y {'task': 'price', 'strategy': 'error_drift_3y', 'split': 'all', 'retrains_to_end': 6, 'Acc': 77.43135893876291, 'BalAcc': 76.55711473929792}
+Stage 2 complete. Selected using development period: {'demand': {'strategy': 'periodic_3y', 'family': 'boost_demand', 'setting': 31, 'selection_value': 2.485702301978553}, 'price': {'strategy': 'input_drift_3y', 'family': 'boost_price', 'setting': 31, 'selection_value': -80.40349014187218}}
+
+Running experiments/feature_analysis.py
+demand all_features {'MAPE': 2.485702301978553, 'MAE': 197.66954824266222}
+demand no_other_states {'MAPE': 2.56129828901354, 'MAE': 203.76915308262355}
+demand no_weather {'MAPE': 2.8689168668916554, 'MAE': 230.94979815704673}
+demand no_market_lags {'MAPE': 6.504043514312584, 'MAE': 509.6545245546079}
+price all_features {'Acc': 80.24543378995433, 'BalAcc': 80.40349014187218}
+price no_other_states {'Acc': 79.57191780821918, 'BalAcc': 79.73134977542047}
+price no_weather {'Acc': 79.52625570776256, 'BalAcc': 79.68973892494031}
+price no_market_lags {'Acc': 77.08904109589041, 'BalAcc': 77.03900046634355}
+
+Running experiments/make_plots.py
+D:\comp9417_project_kit\experiments\make_plots.py:139: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dt['weekend']=dt.index.dayofweek>=5
+Created figures in D:\comp9417_project_kit\results\plots
+
+Running experiments/diagnostics.py
+Saved dependence, alarm/degradation and event-date diagnostics.
+
+Running experiments/liveweek_analysis.py
+Seasonal frozen-week check: {'year': 2020, 'training_end': '2020-10-31', 'forecast_start': '2020-12-07', 'MAPE': 3.4187112014581835, 'MAE': 235.5445473483346, 'BalAcc': 70.42426430763675, 'Acc': 68.45238095238095}
+Seasonal frozen-week check: {'year': 2021, 'training_end': '2021-10-31', 'forecast_start': '2021-12-07', 'MAPE': 3.194982584913947, 'MAE': 213.69380182072223, 'BalAcc': 71.27501064282673, 'Acc': 71.13095238095238}
+Seasonal frozen-week check: {'year': 2022, 'training_end': '2022-10-31', 'forecast_start': '2022-12-07', 'MAPE': 3.975191728445054, 'MAE': 256.4366975188929, 'BalAcc': 87.5, 'Acc': 87.5}
+Seasonal frozen-week check: {'year': 2023, 'training_end': '2023-10-31', 'forecast_start': '2023-12-07', 'MAPE': 5.2648364084237835, 'MAE': 438.5428914418289, 'BalAcc': 82.77777777777777, 'Acc': 86.01190476190477}
+Seasonal frozen-week check: {'year': 2024, 'training_end': '2024-10-31', 'forecast_start': '2024-12-07', 'MAPE': 4.928725249172189, 'MAE': 359.1907877897059, 'BalAcc': 87.32981993851558, 'Acc': 88.69047619047619}
+Seasonal frozen-week check: {'year': 2025, 'training_end': '2025-10-31', 'forecast_start': '2025-12-07', 'MAPE': 5.730190581354274, 'MAE': 390.63707444716846, 'BalAcc': 85.93001306809931, 'Acc': 85.71428571428571}
+{
+  "live_week": "2026-12-07 to 2026-12-13",
+  "metrics_percent": {
+    "MAPE": {
+      "point": 5.307917412983415,
+      "empirical_scenario_interval": [
+        2.1864162338563493,
+        8.401138757460988
+      ]
+    },
+    "BalAcc": {
+      "point": 85.34587026146421,
+      "empirical_scenario_interval": [
+        69.30010964168471,
+        92.19804786003662
+      ]
+    }
+  },
+  "point_basis": "mean of same-week frozen backtests in 2023, 2024 and 2025",
+  "range_basis": "envelope of six same-week backtests and 2.5/97.5 percentiles of holdout rolling-seven-day scores",
+  "interpretation": "empirical uncertainty/scenario ranges, not a formal 95% confidence or guaranteed prediction interval",
+  "limitations": [
+    "only six season-matched annual weeks; only three recent weeks for point",
+    "overlapping holdout windows are dependent and not identically distributed",
+    "weather supplied as perfect reanalysis; real forecast errors not represented",
+    "unseen market changes, extreme heat, holidays and price spikes can invalidate ranges",
+    "2020-2024 seasonal checks reuse development history; 2025 is the season-matched holdout",
+    "December 7 has a different weekday across years; previous-day price threshold can change class mix"
+  ]
+}
+
+Running experiments/verify.py
+{
+  "budget_and_retraining_chronology": "passed",
+  "bootstrap_matches_appendix_algorithm": "passed",
+  "detector_future_invariance_and_signal": "passed",
+  "causal_features_match_inference_on_boundaries": "passed",
+  "all_frozen_models_have_142_months_and_both_intervals": "passed",
+  "explicit_holdout_policy": "passed"
+}
+
+Running forecast/train.py
+Final models trained on 52560 intervals in 3.92s.
+{
+  "seed": 9417,
+  "strategy_selection": "2015-2024; holdout 2025-October 2026",
+  "historical_strategies": {
+    "demand": "periodic_3y",
+    "price": "input_drift_3y"
+  },
+  "window_days": 1095,
+  "rows": 52560,
+  "training_first_market_day": "2023-11-02",
+  "training_last_market_day": "2026-10-31",
+  "live_prediction": "fixed parameters; no retraining or persisted state"
+}
+
+Running experiments/check_reproducibility.py
+Final models trained on 52560 intervals in 3.65s.
+{
+  "seed": 9417,
+  "strategy_selection": "2015-2024; holdout 2025-October 2026",
+  "historical_strategies": {
+    "demand": "periodic_3y",
+    "price": "input_drift_3y"
+  },
+  "window_days": 1095,
+  "rows": 52560,
+  "training_first_market_day": "2023-11-02",
+  "training_last_market_day": "2026-10-31",
+  "live_prediction": "fixed parameters; no retraining or persisted state"
+}
+{
+  "status": "passed",
+  "comparison": "byte-identical models.joblib after rebuilding with train.py",
+  "sha256": "eedb3a75054b40454ca24ab4b567976ecfcc596f8b75859b0acc6f58b8be5a8f",
+  "platform": "local Windows Python 3.11; Linux environment not available here"
+}
+
+Running experiments/check_inference.py
+All 14 days passed; init 1.406s; max predict 0.507s
+
+Running experiments/build_packages.py
+{
+  "artifact_bytes": 1177990,
+  "model_zip_bytes": 461988,
+  "experiment_zip_bytes": 3397821,
+  "report": "not generated; group-written report required by course specification"
+}
+Packaged into C:\Users\Kapil Vinayak\Documents\Codex\2026-11-05\files-mentioned-by-the-user-comp9417\outputs
+Package found at C:\Users\Kapil Vinayak\AppData\Local\Packages\openai.codex_2p2nqsd0c76g0\AC\#!sandbox.{e85a78cd-8fd3-4213-8ca1-6ff2b84fd361}\Temp\c9417check_257ncs9r\pkg
+
+2026-10-18  ok    init   1.3s  predict   0.4s
+2026-10-19  ok    init   1.4s  predict   0.4s
+2026-10-20  ok    init   1.3s  predict   0.3s
+2026-10-21  ok    init   1.3s  predict   0.3s
+2026-10-22  ok    init   1.2s  predict   0.3s
+2026-10-23  ok    init   1.6s  predict   0.4s
+2026-10-24  ok    init   1.1s  predict   0.5s
+2026-10-25  ok    init   0.9s  predict   0.4s
+2026-10-26  ok    init   1.3s  predict   0.5s
+2026-10-27  ok    init   1.1s  predict   0.4s
+2026-10-28  ok    init   1.5s  predict   0.3s
+2026-10-29  ok    init   1.0s  predict   0.3s
+
+2026-10-30  ok    init   1.0s  predict   0.3s
+2026-10-31  ok    init   1.2s  predict   0.3s
+
+Scores:
+(in-sample if your models were trained on these days: they check that the package
+ runs, not how it will perform in the live week)
+                              MAPE %   MAE MW  BalAcc %   Acc %
+Your package                    2.86    169.8      92.9    92.9
+Same half-hour yesterday        7.12    415.3      78.0    78.1
+Same half-hour last week        9.95    556.2      73.2    73.5
+
+All days ran successfully.
+
+
+Running experiments/build_packages.py
+{
+  "artifact_bytes": 1177990,
+  "model_zip_bytes": 461988,
+  "experiment_zip_bytes": 3399033,
+  "report": "not generated; group-written report required by course specification"
+}
+Packaged into C:\Users\Kapil Vinayak\Documents\Codex\2026-11-05\files-mentioned-by-the-user-comp9417\outputs
+Completed. Report must be written by your group. Deliverables: C:\Users\Kapil Vinayak\Documents\Codex\2026-11-05\files-mentioned-by-the-user-comp9417\outputs

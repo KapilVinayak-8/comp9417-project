@@ -1,0 +1,30 @@
+{
+  "live_week": "2026-12-07 to 2026-12-13",
+  "metrics_percent": {
+    "MAPE": {
+      "point": 5.307917412983415,
+      "empirical_scenario_interval": [
+        2.1864162338563493,
+        8.401138757460988
+      ]
+    },
+    "BalAcc": {
+      "point": 85.34587026146421,
+      "empirical_scenario_interval": [
+        69.30010964168471,
+        92.19804786003662
+      ]
+    }
+  },
+  "point_basis": "mean of same-week frozen backtests in 2023, 2024 and 2025",
+  "range_basis": "envelope of six same-week backtests and 2.5/97.5 percentiles of holdout rolling-seven-day scores",
+  "interpretation": "empirical uncertainty/scenario ranges, not a formal 95% confidence or guaranteed prediction interval",
+  "limitations": [
+    "only six season-matched annual weeks; only three recent weeks for point",
+    "overlapping holdout windows are dependent and not identically distributed",
+    "weather supplied as perfect reanalysis; real forecast errors not represented",
+    "unseen market changes, extreme heat, holidays and price spikes can invalidate ranges",
+    "2020-2024 seasonal checks reuse development history; 2025 is the season-matched holdout",
+    "December 7 has a different weekday across years; previous-day price threshold can change class mix"
+  ]
+}

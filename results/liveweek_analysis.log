@@ -1,0 +1,36 @@
+Seasonal frozen-week check: {'year': 2020, 'training_end': '2020-10-31', 'forecast_start': '2020-12-07', 'MAPE': 3.4187112014581835, 'MAE': 235.5445473483346, 'BalAcc': 70.42426430763675, 'Acc': 68.45238095238095}
+Seasonal frozen-week check: {'year': 2021, 'training_end': '2021-10-31', 'forecast_start': '2021-12-07', 'MAPE': 3.194982584913947, 'MAE': 213.69380182072223, 'BalAcc': 71.27501064282673, 'Acc': 71.13095238095238}
+Seasonal frozen-week check: {'year': 2022, 'training_end': '2022-10-31', 'forecast_start': '2022-12-07', 'MAPE': 3.975191728445054, 'MAE': 256.4366975188929, 'BalAcc': 87.5, 'Acc': 87.5}
+Seasonal frozen-week check: {'year': 2023, 'training_end': '2023-10-31', 'forecast_start': '2023-12-07', 'MAPE': 5.2648364084237835, 'MAE': 438.5428914418289, 'BalAcc': 82.77777777777777, 'Acc': 86.01190476190477}
+Seasonal frozen-week check: {'year': 2024, 'training_end': '2024-10-31', 'forecast_start': '2024-12-07', 'MAPE': 4.928725249172189, 'MAE': 359.1907877897059, 'BalAcc': 87.32981993851558, 'Acc': 88.69047619047619}
+Seasonal frozen-week check: {'year': 2025, 'training_end': '2025-10-31', 'forecast_start': '2025-12-07', 'MAPE': 5.730190581354274, 'MAE': 390.63707444716846, 'BalAcc': 85.93001306809931, 'Acc': 85.71428571428571}
+{
+  "live_week": "2026-12-07 to 2026-12-13",
+  "metrics_percent": {
+    "MAPE": {
+      "point": 5.307917412983415,
+      "empirical_scenario_interval": [
+        2.1864162338563493,
+        8.401138757460988
+      ]
+    },
+    "BalAcc": {
+      "point": 85.34587026146421,
+      "empirical_scenario_interval": [
+        69.30010964168471,
+        92.19804786003662
+      ]
+    }
+  },
+  "point_basis": "mean of same-week frozen backtests in 2023, 2024 and 2025",
+  "range_basis": "envelope of six same-week backtests and 2.5/97.5 percentiles of holdout rolling-seven-day scores",
+  "interpretation": "empirical uncertainty/scenario ranges, not a formal 95% confidence or guaranteed prediction interval",
+  "limitations": [
+    "only six season-matched annual weeks; only three recent weeks for point",
+    "overlapping holdout windows are dependent and not identically distributed",
+    "weather supplied as perfect reanalysis; real forecast errors not represented",
+    "unseen market changes, extreme heat, holidays and price spikes can invalidate ranges",
+    "2020-2024 seasonal checks reuse development history; 2025 is the season-matched holdout",
+    "December 7 has a different weekday across years; previous-day price threshold can change class mix"
+  ]
+}
