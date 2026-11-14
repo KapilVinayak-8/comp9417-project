@@ -71,11 +71,10 @@ def main():
     if ok_pred:
         truth = pd.concat(ok_truth)
         note = "" if not failures else f" (successful days only: {len(ok_pred)} of {len(days)})"
-        print(f"\nScores{note}:")
-        print("(in-sample if your models were trained on these days: they check that the package\n"
-              " runs, not how it will perform in the live week)")
+        print(f"\nLocal submission check{note}")
+        print("For the final trained models, these scores are based on days included in training.")
         print(f"{'':28s}{'MAPE %':>8s}{'MAE MW':>9s}{'BalAcc %':>10s}{'Acc %':>8s}")
-        for name, p in (("Your package", ok_pred), ("Same half-hour yesterday", ok_b1),
+        for name, p in (("Submitted model", ok_pred), ("Same half-hour yesterday", ok_b1),
                         ("Same half-hour last week", ok_b7)):
             s = da.score(truth, pd.concat(p))
             print(f"{name:28s}{s['MAPE']:8.2f}{s['MAE']:9.1f}{s['BalAcc']:10.1f}{s['Acc']:8.1f}")
