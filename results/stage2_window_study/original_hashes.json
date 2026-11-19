@@ -1,0 +1,12 @@
+{
+  "results/adaptation_summary.csv": "8a54c01a679c78362b2087a156fab243aff980a115c3cf7634408e6ffa242602",
+  "results/retraining_log.csv": "57c904fcf84f6b848d08aeb345cb2fd2af3dd9fae1cf6fe91c9153006fa437aa",
+  "results/drift_signals.csv": "2e8d1bcebf8d58016c15732f2063a3c23288ddfaaf04b9fa536cfe9f91388de3",
+  "results/stage2_period_metrics.csv": "da6028c821f616b4940ed970d513271e4c307eaea3181704ce627283eb750a4b",
+  "results/final_strategy.json": "a42690baf7893101194b056b78447b516769bce31bd4d5c8e0e08d02d4072e6b",
+  "forecast/model.py": "7cddb5a0fe24e2337f18fa15aaf73c33e92bf96043c4524a12c6ebc6f78396a0",
+  "forecast/train.py": "2ceba08a7647b25f2a374b7c67bae5c3dda333b1e39fb210bded4f8817fd9145",
+  "forecast/artifacts/models.joblib": "eedb3a75054b40454ca24ab4b567976ecfcc596f8b75859b0acc6f58b8be5a8f",
+  "deliverables/submission.zip": "d7c5f96c1f801c8610c1092ee1864b28e6674e86edcb7971d71826d606a9d362",
+  "deliverables/experiment_code.zip": "4ab4ea28d4d487764297ff7d04967992f27a1c9204a85acac8a1e1c7a9f6f366"
+}

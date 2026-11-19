@@ -1,0 +1,11 @@
+{
+  "baseline_regression_checks": {
+    "adaptation_summary.csv": "passed",
+    "retraining_log.csv": "passed",
+    "drift_signals.csv": "passed",
+    "stage2_period_metrics.csv": "passed"
+  },
+  "all_candidate_chronology_budgets_and_window_lengths": "passed",
+  "protected_original_files_unchanged": true,
+  "selection_uses_development_only": true
+}

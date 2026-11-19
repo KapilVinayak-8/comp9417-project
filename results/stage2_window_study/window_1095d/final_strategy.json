@@ -1,0 +1,19 @@
+{
+  "selection_period": "2015-2024 only",
+  "holdout": "2025-October 2026, no policy revision",
+  "window_days": 1095,
+  "selected": {
+    "demand": {
+      "strategy": "periodic_3y",
+      "family": "boost_demand",
+      "setting": 31,
+      "selection_value": 2.485702301978553
+    },
+    "price": {
+      "strategy": "input_drift_3y",
+      "family": "boost_price",
+      "setting": 31,
+      "selection_value": -80.40349014187218
+    }
+  }
+}

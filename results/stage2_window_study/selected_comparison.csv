@@ -1,0 +1,7 @@
+task,split,metric,original_strategy,original_score,selected_strategy,selected_window_days,selected_score,improvement_percentage_points,selected_retrains_to_end
+demand,development,MAPE,periodic_3y,3.22823971710086,periodic_3y,1095,3.22823971710086,0.0,5
+demand,holdout,MAPE,periodic_3y,4.403782610976041,periodic_3y,1095,4.403782610976041,0.0,6
+demand,all,MAPE,periodic_3y,3.4102013543064356,periodic_3y,1095,3.4102013543064356,0.0,6
+price,development,BalAcc,input_drift_3y,75.76967092106135,input_drift_3y,1095,75.76967092106135,0.0,6
+price,holdout,BalAcc,input_drift_3y,81.86009081664248,input_drift_3y,1095,81.86009081664248,0.0,6
+price,all,BalAcc,input_drift_3y,76.89037479540393,input_drift_3y,1095,76.89037479540393,0.0,6

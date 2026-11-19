@@ -1,0 +1,25 @@
+{
+  "selection_period": "2015-2024 only",
+  "selected": {
+    "demand": {
+      "window_days": 1095,
+      "strategy": "periodic_3y",
+      "metric": "MAPE",
+      "development_score": 3.22823971710086
+    },
+    "price": {
+      "window_days": 1095,
+      "strategy": "input_drift_3y",
+      "metric": "BalAcc",
+      "development_score": 75.76967092106135
+    }
+  },
+  "candidate_window_days": [
+    365,
+    730,
+    1095
+  ],
+  "hyperparameters": "unchanged, chosen on 2014",
+  "subsequent_period": "2025-October 2026; already examined, descriptive check only",
+  "submission_models_changed": false
+}

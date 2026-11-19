@@ -27,7 +27,7 @@ def main():
     files=[]
     files.extend(ROOT.glob('*.md'))
     files.extend([ROOT/'requirements.txt',ROOT/'check_submission.py',ROOT/'run_all.py'])
-    for folder in ('experiments','forecast','harness'):
+    for folder in ('experiments','forecast','harness','tests'):
         files.extend((ROOT/folder).glob('*.py'))
     # Small saved evidence is convenient; models/prediction parquet can be rebuilt.
     for p in (ROOT/'results').rglob('*'):

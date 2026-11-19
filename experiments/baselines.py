@@ -9,8 +9,8 @@ sys.path.insert(0, str(ROOT))
 from harness import dayahead as h
 
 
-def prepare():
-    df = h.load_dataset(ROOT/'data/nem_weather_halfhourly_2010_2026.csv')
+def prepare(data_path=None):
+    df = h.load_dataset(data_path or ROOT/'data/nem_weather_halfhourly_2010_2026.csv')
     assert not df.index.has_duplicates
     assert not df.isna().any().any()
     assert (df.index.to_series().diff().iloc[1:] == pd.Timedelta('30min')).all()
