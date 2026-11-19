@@ -1,4 +1,4 @@
-"""Verify train.py recreates the same fitted model, then leave rebuilt artifacts in place."""
+"""Check that train.py rebuilds the same model."""
 from pathlib import Path
 import sys
 import subprocess

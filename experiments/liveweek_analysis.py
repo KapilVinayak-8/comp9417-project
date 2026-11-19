@@ -1,4 +1,4 @@
-"""Numerical support for the group-written live-week forecast section.
+"""Estimate live-week performance from historical backtests.
 No claim of guaranteed coverage: historical ranges are scenario estimates.
 """
 from pathlib import Path
@@ -66,8 +66,8 @@ def main():
     weeks=pd.DataFrame(windows)
     weeks.to_csv(ROOT/'results/holdout_weekly_scores.csv',index=False)
     forecast={}
-    # Predeclared simple summary: recent three matching December weeks for point;
-    # envelope of seasonal scores and central 95% holdout-week spread for range.
+    # Use the three recent matching December weeks for the point estimate;
+    # use seasonal scores and the central 95% of holdout-week scores for the range.
     for metric in ('MAPE','BalAcc'):
         low,high=weeks[metric].quantile([.025,.975])
         forecast[metric]={'point':float(seasonal.tail(3)[metric].mean()),

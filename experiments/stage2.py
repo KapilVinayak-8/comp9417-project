@@ -119,7 +119,7 @@ def day_types(df, output_dir=None):
 
 
 def input_statistics(df):
-    """Monitors only observed inputs, at end of day D. No forecast errors/targets."""
+    """Monitor inputs available at the end of day D, without using targets or errors."""
     days=h.market_day(df.index)
     daily=pd.DataFrame(index=days.unique())
     daily['demand_mean']=df.nsw_demand.groupby(days).mean()
@@ -148,7 +148,7 @@ def error_reference(loss,index):
 
 
 class Detector:
-    """One-sided rolling mean, seven confirmations, 540-day cooldown.
+    """Flag a rise in the rolling mean after seven confirmations; wait 540 days between alarms.
     A detector sees day D only after its forecast has been evaluated.
     """
     def __init__(self,threshold):
@@ -301,7 +301,7 @@ def main():
     summary=[]
     alarms=[]
     retrains=[]
-    # Frozen histories of every model studied in Stage 1, not only selected models.
+    # Evaluate every frozen Stage 1 model, including those not selected.
     for family,task in [('ridge','demand'),('boost_demand','demand'),('logistic','price'),('boost_price','price')]:
         target='nsw_demand_mw' if task=='demand' else 'nsw_price_up'
         prediction=pd.read_parquet(stage1/f'{family}_simulation.parquet')[target]
@@ -358,7 +358,7 @@ def main():
     pd.DataFrame(summary).to_csv(out/'adaptation_summary.csv',index=False)
     pd.DataFrame(alarms).to_csv(out/'drift_signals.csv',index=False)
     pd.DataFrame(retrains).to_csv(out/'retraining_log.csv',index=False)
-    # Selection ONLY uses 2015-2024, then reports holdout without revising policy.
+    # Select using 2015-2024; evaluate the holdout without changing the policy.
     final={}
     table=pd.DataFrame(summary)
     for task in ('demand','price'):
@@ -367,7 +367,7 @@ def main():
         final[task]={'strategy':best.strategy,**config['selected'][task]}
     (out/'final_strategy.json').write_text(json.dumps({'selection_period':'2015-2024 only','holdout':'2025-October 2026, no policy revision',
         'window_days':args.window_days,'selected':final},indent=2))
-    # Relate fixed-reference day types and input monitoring to frozen daily errors.
+    # Compare day types and input alarms with frozen-model daily errors.
     relation=daily_types.copy()
     relation['input_statistic']=input_monitor
     relation['input_above_threshold']=input_monitor>input_threshold

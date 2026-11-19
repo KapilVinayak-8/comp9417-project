@@ -1,4 +1,4 @@
-"""Data checks, authoritative baseline verification, and period summaries."""
+"""Check the data and baselines, then summarise each evaluation period."""
 from pathlib import Path
 import sys
 import json
@@ -43,7 +43,7 @@ def summaries(truth, pred, name, valid):
 
 def main():
     df, truth, predictions = prepare()
-    # Check vectorised implementation against authoritative helpers across eras,
+    # Compare the vectorised baselines with the supplied helpers across years,
     # including year boundaries, leap days and the midnight interval convention.
     for date in ('2010-01-08','2014-12-31','2016-02-29','2021-10-01','2026-10-31'):
         history, weather = h.make_inputs(df,date)

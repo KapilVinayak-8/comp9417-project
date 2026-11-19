@@ -1,4 +1,4 @@
-"""Post-hoc numerical diagnostics. Never used for training, thresholds or selection."""
+"""Analyse the results after evaluation; these checks do not affect model selection."""
 from pathlib import Path
 import sys
 import numpy as np
@@ -37,7 +37,7 @@ def main():
                          'loss_change':delta,'day_bootstrap_difference_low':lo,'day_bootstrap_difference_high':hi})
     pd.DataFrame(rows).to_csv(ROOT/'results/alarm_degradation_comparison.csv',index=False)
     pd.DataFrame(correlations).to_csv(ROOT/'results/error_dependence.csv',index=False)
-    # Background event dates are used ONLY for offline comparisons, never as features.
+    # Use event dates to interpret results, not as model inputs.
     events=[{'date':'2021-10-01','event':'Five-minute settlement commencement',
              'source':'https://www.aemo.com.au/initiatives/major-programs/past-major-programs/five-minute-settlement'},
             {'date':'2022-06-15','event':'NEM spot market suspension',

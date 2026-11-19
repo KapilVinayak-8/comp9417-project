@@ -71,8 +71,8 @@ def main():
     if ok_pred:
         truth = pd.concat(ok_truth)
         note = "" if not failures else f" (successful days only: {len(ok_pred)} of {len(days)})"
-        print(f"\nLocal submission check{note}")
-        print("For the final trained models, these scores are based on days included in training.")
+        print(f"\nModel results{note}")
+        print("Scores on training dates do not measure performance on unseen data.")
         print(f"{'':28s}{'MAPE %':>8s}{'MAE MW':>9s}{'BalAcc %':>10s}{'Acc %':>8s}")
         for name, p in (("Submitted model", ok_pred), ("Same half-hour yesterday", ok_b1),
                         ("Same half-hour last week", ok_b7)):

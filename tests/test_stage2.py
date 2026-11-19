@@ -1,4 +1,4 @@
-"""Behavioral guards for temporal simulation and candidate selection."""
+"""Test retraining timing, budget limits and window selection."""
 import unittest
 from contextlib import redirect_stderr
 from io import StringIO

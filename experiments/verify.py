@@ -1,4 +1,4 @@
-"""Focused checks of chronology, bootstrap, online detectors, and feature causality."""
+"""Check time ordering, bootstrap intervals, drift detectors and feature leakage."""
 from pathlib import Path
 import sys
 import json
@@ -44,7 +44,7 @@ def main():
         serving=features(pd.concat([history.iloc[-14*48:],weather.reindex(columns=history.columns)])).iloc[-48:]
         pd.testing.assert_frame_equal(expected,serving)
     checks['causal_features_match_inference_on_boundaries']='passed'
-    # Every frozen Stage 1 family must have monthly intervals, not just winners.
+    # Check monthly intervals for every frozen Stage 1 model.
     metrics=pd.read_csv(ROOT/'results/stage2_period_metrics.csv')
     for family in ('ridge','boost_demand','logistic','boost_price'):
         sub=metrics[(metrics.model==family)&(metrics.frequency=='M')&(metrics.strategy=='frozen')]

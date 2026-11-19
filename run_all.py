@@ -1,4 +1,4 @@
-"""One entry point. Run from the project environment; no network access required."""
+"""Run the full experiment workflow in the project environment."""
 from pathlib import Path
 import argparse
 import subprocess
@@ -21,7 +21,7 @@ def main():
     run('experiments/check_reproducibility.py')
     run('experiments/check_inference.py')
     run('experiments/build_packages.py','--output-dir',args.output_dir)
-    # Save authoritative checker output, including the in-sample-score warning.
+    # Save the checker results.
     checked=subprocess.run([sys.executable,str(ROOT/'check_submission.py'),str(args.output_dir/'submission.zip')],
                            cwd=ROOT,capture_output=True,text=True)
     print(checked.stdout,flush=True)
@@ -29,8 +29,8 @@ def main():
     (ROOT/'results/submission_check.log').write_text(checked.stdout+'\n'+checked.stderr)
     if checked.returncode: raise SystemExit(checked.returncode)
     if 'All days ran successfully.' not in checked.stdout: raise SystemExit('Checker did not confirm success')
-    # Refresh source ZIP so it includes this run's checker evidence. Model ZIP is unchanged.
+    # Include the latest checker results in the experiment ZIP.
     run('experiments/build_packages.py','--output-dir',args.output_dir)
-    print('Completed. Report must be written by your group. Deliverables:',args.output_dir,flush=True)
+    print('Completed. Deliverables:',args.output_dir,flush=True)
 
 if __name__=='__main__': main()

@@ -1,4 +1,4 @@
-"""Check current Forecaster outputs against the marking schema."""
+"""Check that model predictions match the required format."""
 from pathlib import Path
 import sys
 import time

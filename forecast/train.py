@@ -1,4 +1,4 @@
-"""Rebuild final artifacts from the released CSV, with no network access.
+"""Train the final models from the supplied CSV without network access.
 Usage: python train.py path/to/nem_weather_halfhourly_2010_2026.csv
 Historical experiment scripts are separate; this script rebuilds only final models.
 """
@@ -14,7 +14,7 @@ from model import features
 
 SEED=9417
 WINDOW_DAYS=1095
-# Chosen on 2015-2024 only. Both policies replace models using a 3-year window.
+# Selected using 2015-2024 data. Both policies use a three-year training window.
 STRATEGIES={'demand':'periodic_3y','price':'input_drift_3y'}
 
 
@@ -31,7 +31,7 @@ def main():
     if days.max()>pd.Timestamp('2026-10-31'):
         raise ValueError('Training must not use data after 31 October 2026')
     cutoff=days.max()+pd.Timedelta(days=1)
-    # Include extra context for lags, then select the three-year fitting window.
+    # Load enough history for lag features, then select three years for training.
     context=df.loc[days>=cutoff-pd.Timedelta(days=WINDOW_DAYS+14)]
     x=features(context)
     fitdays=(x.index-pd.Timedelta(minutes=30)).normalize()

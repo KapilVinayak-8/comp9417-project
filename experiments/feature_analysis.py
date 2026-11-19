@@ -1,4 +1,4 @@
-"""Small controlled feature experiments on 2014 only, plus descriptive data tables."""
+"""Compare feature groups on 2014 data and summarise the dataset."""
 from pathlib import Path
 import sys
 import json
@@ -45,7 +45,7 @@ def main():
             p=model.predict(x.loc[val])
             results.append({'task':task,'variant':'class_weight_balanced','features':x.shape[1],
                             'Acc':h.accuracy(truth.loc[val,col],p),'BalAcc':h.balanced_accuracy(truth.loc[val,col],p)})
-    # These follow-up ablations explain the fixed Stage 1 choice; they do not revise it.
+    # Compare feature groups without changing the model selected in Stage 1.
     pd.DataFrame(results).to_csv(ROOT/'results/feature_ablations.csv',index=False)
     pd.DataFrame(importance).to_csv(ROOT/'results/feature_importance.csv',index=False)
     df.describe(percentiles=[.01,.5,.99]).to_csv(ROOT/'results/data_summary.csv')

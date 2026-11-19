@@ -4,5 +4,5 @@
   "pca_components": 5,
   "explained_variance": 0.962424466548255,
   "selected_k": 2,
-  "unusual_distance_cutoff_training_99pct": 0.5859386234347229
+  "unusual_distance_cutoff_training_99pct": 0.5859386234347228
 }

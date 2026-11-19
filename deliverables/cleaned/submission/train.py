@@ -27,7 +27,6 @@ def main():
     if days.max()>pd.Timestamp('2026-10-31'):
         raise ValueError('Training must not use data after 31 October 2026')
     cutoff=days.max()+pd.Timedelta(days=1)
-    # Include extra context for lags, then select the three-year fitting window.
     context=df.loc[days>=cutoff-pd.Timedelta(days=WINDOW_DAYS+14)]
     x=features(context)
     fitdays=(x.index-pd.Timedelta(minutes=30)).normalize()

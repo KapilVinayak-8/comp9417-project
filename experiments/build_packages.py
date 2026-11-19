@@ -1,4 +1,4 @@
-"""Package the final model separately from experiment source/results. No report included."""
+"""Package the model, experiment code and results."""
 from pathlib import Path
 import argparse
 import zipfile
@@ -29,7 +29,7 @@ def main():
     files.extend([ROOT/'requirements.txt',ROOT/'check_submission.py',ROOT/'run_all.py'])
     for folder in ('experiments','forecast','harness','tests'):
         files.extend((ROOT/folder).glob('*.py'))
-    # Small saved evidence is convenient; models/prediction parquet can be rebuilt.
+    # Include saved results; models and predictions can be rebuilt.
     for p in (ROOT/'results').rglob('*'):
         if p.is_file() and p.suffix in ('.csv','.json','.png','.log'):
             files.append(p)
@@ -43,8 +43,7 @@ def main():
     for p in (ROOT/'results/plots').glob('*.png'):
         shutil.copyfile(p,plotout/p.name)
     manifest={'artifact_bytes':size,'model_zip_bytes':(out/'submission.zip').stat().st_size,
-              'experiment_zip_bytes':(out/'experiment_code.zip').stat().st_size,
-              'report':'not generated; group-written report required by course specification'}
+              'experiment_zip_bytes':(out/'experiment_code.zip').stat().st_size}
     (out/'package_manifest.json').write_text(json.dumps(manifest,indent=2))
     print(json.dumps(manifest,indent=2))
     print('Packaged into',out)

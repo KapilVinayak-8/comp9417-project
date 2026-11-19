@@ -1,4 +1,4 @@
-"""Shared day-ahead features and inference. All market features precede target day."""
+"""Build day-ahead features and predictions using only earlier market data."""
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -10,7 +10,7 @@ WEATHER = [f'{city}_{v}' for city in ('syd','mel','bne') for v in ('temp','rh','
 
 
 def features(frame):
-    """Requires complete consecutive market days; preserves interval-end timestamps."""
+    """Require complete consecutive market days and keep interval-end timestamps."""
     if len(frame) % 48 or not frame.index.is_monotonic_increasing:
         raise ValueError('Expected complete ordered days')
     start = frame.index - pd.Timedelta(minutes=30)
@@ -41,7 +41,7 @@ class Forecaster:
         self.bundle = joblib.load(Path(artifact_dir) / 'models.joblib')
 
     def predict(self, history, weather_next):
-        # Fourteen complete days suffice for every feature; no fitted state changes.
+        # Use 14 complete days of history without changing the fitted model.
         past = history.iloc[-14*48:]
         frame = pd.concat([past, weather_next.reindex(columns=past.columns)])
         x = features(frame).iloc[-48:][self.bundle['columns']]

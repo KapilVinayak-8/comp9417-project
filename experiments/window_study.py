@@ -1,4 +1,4 @@
-"""Compare replacement windows, selecting solely on 2015-2024 scores.
+"""Compare training windows using 2015-2024 scores for selection.
 
 The subsequent 2025-October 2026 results have already been examined. They are
 reported descriptively and never used by the selection function. This script
@@ -38,7 +38,7 @@ def main():
     baseline_checks = {}
     environment = {**os.environ, 'PYTHONUNBUFFERED': '1'}
 
-    # Baseline first: reject a behavior-changing refactor before testing new windows.
+    # Check the original window results before comparing other windows.
     for window in (1095, 365, 730):
         candidate = out/f'window_{window}d'
         command = [sys.executable, str(ROOT/'experiments/stage2.py'),

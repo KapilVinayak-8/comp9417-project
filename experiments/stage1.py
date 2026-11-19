@@ -1,4 +1,4 @@
-"""Stage 1 only: choose settings on 2014, refit on 2010-2014, freeze.
+"""Choose settings using 2014, refit on 2010-2014, then freeze the models.
 Later-year outcomes do not enter any model or hyperparameter selection here.
 """
 from pathlib import Path
@@ -81,7 +81,7 @@ def main():
         joblib.dump(model,frozen_dir/f'{family}.joblib')
         if task not in selected or best_value<selected[task]['selection_value']:
             selected[task]={'family':family,'setting':best_setting,'selection_value':best_value}
-        # Store predictions for subsequent drift, confidence intervals and adaptation comparisons.
+        # Save predictions for drift analysis, intervals and retraining comparisons.
         prediction=pd.DataFrame(index=df.index[simulation])
         prediction[target]=model.predict(x.loc[simulation])
         prediction.to_parquet(frozen_dir/f'{family}_simulation.parquet')

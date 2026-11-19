@@ -1,4 +1,4 @@
-"""Report-ready figures from saved numerical results; no model selection here."""
+"""Plot the saved results without changing the selected models."""
 from pathlib import Path
 import sys
 import json
@@ -54,7 +54,7 @@ def main():
         ax.set(xlabel='Market month (AEST)',ylabel=label)
         ax.legend(ncol=3,fontsize=8)
         save(fig,f'adaptation_{task}')
-        # Adapted confidence intervals shown separately for legibility.
+        # Plot adapted-model intervals separately to keep the figures readable.
         fig,axes=plt.subplots(3,1,figsize=(11,7),sharex=True)
         for ax,strategy in zip(axes,('periodic_3y','input_drift_3y','error_drift_3y')):
             sub=monthly[(monthly.task==task)&(monthly.model==chosen)&(monthly.strategy==strategy)]
@@ -113,7 +113,7 @@ def main():
     axes[1].set_xscale('symlog',linthresh=100)
     axes[1].set(xlabel='Previous day mean NSW price ($/MWh; symlog scale)',ylabel='Positive target class (%)')
     save(fig,'class_balance')
-    # Two fixed illustrative weeks, not selected by largest/smallest errors.
+    # Show two fixed weeks rather than choosing weeks by their errors.
     for first in ('2016-07-04','2026-07-06'):
         last=pd.Timestamp(first)+pd.Timedelta(days=7)
         days=h.market_day(df.index)
@@ -131,10 +131,10 @@ def main():
         axes[1].set(ylabel='Price-direction class (0/1)',xlabel='Interval end timestamp (AEST)')
         for ax in axes: ax.legend(fontsize=7,ncol=3)
         save(fig,'prediction_week_'+first)
-    # Numeric CI comparison supports interpretation rather than overlap-based testing.
+    # Compare interval widths; overlap alone is not a significance test.
     widths=monthly.assign(iid_width=monthly.iid_high-monthly.iid_low,day_width=monthly.day_high-monthly.day_low)
     widths.groupby(['task','model','strategy'])[['iid_width','day_width']].mean().to_csv(ROOT/'results/ci_width_summary.csv')
-    # Cluster interpretation evidence: weekdays, seasons, demand level and drift.
+    # Summarise clusters by weekday, season, demand and changes over time.
     dt=pd.read_csv(ROOT/'results/day_types.csv',parse_dates=['day']).set_index('day')
     dt['weekend']=dt.index.dayofweek>=5
     dt['month']=dt.index.month
